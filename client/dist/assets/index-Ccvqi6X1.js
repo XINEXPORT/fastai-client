@@ -1,0 +1,1 @@
+import{j as s}from"./hooks-BiQeOY3r.js";import{F as i,T as t}from"./App-DY5ymaZ2.js";import"./index-BgM4Nman.js";function a(){return s.jsxs(s.Fragment,{children:[s.jsx("meta",{name:"title",content:"Risk Analysis"}),s.jsx(i,{children:s.jsx(t,{variant:"h3",children:"Risk Analysis"})})]})}export{a as default};

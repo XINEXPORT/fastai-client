@@ -35,7 +35,9 @@ export const ChatForm = styled('form')({
   boxSizing: 'border-box',
   zIndex: 10,
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '1rem',
 });
 
 export const Message = styled('div')({
@@ -61,7 +63,6 @@ export const Input = styled('textarea')(({ theme }) => ({
     minHeight: '5rem',
   },
 }));
-
 
 export const Button = styled('button')({
   padding: '0.75rem 1.5rem',

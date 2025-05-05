@@ -1,0 +1,1 @@
+import{j as t}from"./hooks-BiQeOY3r.js";import{F as e,T as r}from"./App-DY5ymaZ2.js";import"./index-BgM4Nman.js";function a(){return t.jsxs(t.Fragment,{children:[t.jsx("meta",{name:"title",content:"Reports"}),t.jsx(e,{children:t.jsx(r,{variant:"h3",children:"Reports"})})]})}export{a as default};
