@@ -1,32 +1,28 @@
-
 export type AIResponse = {
     text: string;
     media?: string[];
   };
   
-  export const fetchOpenAI = async (prompt: string, apiKey: string): Promise<AIResponse> => {
+  export const fetchAIResponse = async (prompt: string, openaiApiKey: string): Promise<AIResponse> => {
     try {
-      const chatRes = await fetch('https://api.openai.com/v1/chat/completions', {
+
+      const mlResponse = await fetch('https://fastai-webapi.azurewebsites.net/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`,
         },
-        body: JSON.stringify({
-          model: 'gpt-4',
-          messages: [{ role: 'user', content: prompt }],
-          temperature: 0.7,
-        }),
+        body: JSON.stringify({ query: prompt }),
       });
   
-      const chatData = await chatRes.json();
-      const text = chatData.choices?.[0]?.message?.content || 'No text found';
+      const mlData = await mlResponse.json();
+      const text = Array.isArray(mlData.results) ? mlData.results[0] : 'No results returned';
   
-      const dalleRes = await fetch('https://api.openai.com/v1/images/generations', {
+
+      const dalleResponse = await fetch('https://api.openai.com/v1/images/generations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`,
+          Authorization: `Bearer ${openaiApiKey}`,
         },
         body: JSON.stringify({
           prompt,
@@ -35,7 +31,7 @@ export type AIResponse = {
         }),
       });
   
-      const dalleData = await dalleRes.json();
+      const dalleData = await dalleResponse.json();
       const imageUrl = dalleData.data?.[0]?.url;
   
       return {
@@ -43,9 +39,9 @@ export type AIResponse = {
         media: imageUrl ? [imageUrl] : [],
       };
     } catch (err) {
-      console.error('OpenAI API error:', err);
+      console.error('AI API error:', err);
       return {
-        text: 'Failed to fetch from OpenAI.',
+        text: 'Failed to fetch AI response.',
       };
     }
   };

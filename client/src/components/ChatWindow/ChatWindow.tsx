@@ -1,7 +1,6 @@
-// ChatWindow.tsx
 import { useState } from 'react';
 import { Container, Input, Message, ChatForm, MessageWrapper, Button } from './styled';
-import { fetchOpenAI, AIResponse } from '../../services/openaiService';
+import { fetchAIResponse, AIResponse } from '../../services/openaiService';
 
 const ChatWindow = () => {
   const [userInput, setUserInput] = useState('');
@@ -13,14 +12,13 @@ const ChatWindow = () => {
     if (!userInput.trim()) return;
 
     const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-
     if (!apiKey) {
-      setAiResponse({ text: 'API key is missing. Please check your environment config.' });
+      setAiResponse({ text: 'OpenAI API key is missing. Please check your environment config.' });
       return;
     }
 
     setLoading(true);
-    const response = await fetchOpenAI(userInput, apiKey);
+    const response = await fetchAIResponse(userInput, apiKey);
     setAiResponse(response);
     setLoading(false);
     setUserInput('');
@@ -46,7 +44,9 @@ const ChatWindow = () => {
                 }}
               />
             ) : null}
-            <Message style={{ maxWidth: '600px', textAlign: 'left' }}>{aiResponse.text}</Message>
+            <Message style={{ maxWidth: '600px', textAlign: 'left' }}>
+              {aiResponse.text}
+            </Message>
           </>
         ) : (
           <Message>Try asking for advice!</Message>
@@ -67,7 +67,7 @@ const ChatWindow = () => {
           placeholder="Ask something..."
           disabled={loading}
         />
-      <Button type="submit" disabled={loading}>Send</Button>
+        <Button type="submit" disabled={loading}>Send</Button>
       </ChatForm>
     </Container>
   );
