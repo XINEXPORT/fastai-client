@@ -11,38 +11,42 @@ export const Container = styled('div')(({ theme }) => ({
   color: theme.palette.mode === 'dark' ? 'white' : 'black',
 }));
 
-export const MessageWrapper = styled('div')({
+export const MessageWrapper = styled('div')(({ theme }) => ({
   flex: 1,
   overflowY: 'auto',
   width: '100%',
   display: 'flex',
-  paddingBottom: '6rem', 
   justifyContent: 'center',
   alignItems: 'center',
   flexWrap: 'wrap',
   gap: '2rem',
   marginBottom: '1rem',
-});
 
-export const ChatForm = styled('form')({
-  position: 'fixed',
-  bottom: 80,
-  left: 0,
-  right: 0,
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+  },
+}));
+
+export const ChatForm = styled('form')(({ theme }) => ({
   width: '100%',
-  maxWidth: '100%',
+  maxWidth: '800px',
   padding: '1rem',
-  boxSizing: 'border-box',
-  zIndex: 10,
   display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: '1rem',
-});
+  flexWrap: 'wrap',        
+  gap: '0.5rem',
+  justifyContent: 'center',
+
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    alignItems: 'stretch',
+  },
+}));
 
 export const Message = styled('div')({
   fontSize: '1.25rem',
   minHeight: '2rem',
+  maxWidth: '600px',
+  textAlign: 'left'
 });
 
 export const Input = styled('textarea')(({ theme }) => ({
@@ -84,3 +88,17 @@ export const Button = styled('button')({
     cursor: 'not-allowed',
   },
 });
+
+export const ResponsiveImage = styled('img')(({ theme }) => ({
+  width: '100%',
+  maxWidth: '500px',
+  height: 'auto',
+  borderRadius: '8px',
+  boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
+  objectFit: 'cover',
+
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100%',
+  },
+}));
+

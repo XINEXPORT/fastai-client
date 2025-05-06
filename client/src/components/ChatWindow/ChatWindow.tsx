@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Input, Message, ChatForm, MessageWrapper, Button } from './styled';
+import { Container, Input, Message, ChatForm, MessageWrapper, Button, ResponsiveImage } from './styled';
 import { fetchAIResponse, AIResponse } from '../../services/openaiService';
 
 const ChatWindow = () => {
@@ -32,19 +32,14 @@ const ChatWindow = () => {
         ) : aiResponse ? (
           <>
             {aiResponse.media?.length ? (
-              <img
+              
+              <ResponsiveImage
                 src={aiResponse.media[0]}
                 alt="AI generated"
-                style={{
-                  width: '350px',
-                  height: '350px',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                  boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
-                }}
               />
             ) : null}
-            <Message style={{ maxWidth: '600px', textAlign: 'left' }}>
+
+            <Message style={{ }}>
               {aiResponse.text}
             </Message>
           </>
