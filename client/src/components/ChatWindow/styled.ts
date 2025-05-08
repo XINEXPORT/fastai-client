@@ -4,7 +4,8 @@ export const Container = styled('div')(({ theme }) => ({
   width: '90%',
   maxWidth: '90%',
   minHeight: '100vh',
-  padding: '6rem',
+  padding: '1rem',
+  paddingTop: '5rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -27,7 +28,6 @@ export const MessageWrapper = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',    
     alignItems: 'center',
-    paddingTop: '3rem',
     padding: '1 .5rem',
   },
 }));
