@@ -1,31 +1,37 @@
 import { styled } from '@mui/material/styles';
 
 export const Container = styled('div')(({ theme }) => ({
-  width: '100%',
-  maxWidth: '100%',
-  justifyContent: 'flex-end', 
-  padding: '1rem',
+  width: '90%',
+  maxWidth: '90%',
+  minHeight: '100vh',
+  padding: '6rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   color: theme.palette.mode === 'dark' ? 'white' : 'black',
+
 }));
 
 export const MessageWrapper = styled('div')(({ theme }) => ({
-  flex: 1,
-  overflowY: 'auto',
   width: '100%',
   display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  flexDirection: 'row',
   flexWrap: 'wrap',
+  alignItems: 'flex-start',
+  justifyContent: 'center',
   gap: '2rem',
   marginBottom: '1rem',
+  overflowWrap: 'break-word',
+  wordBreak: 'break-word',
 
   [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column',
+    flexDirection: 'column',    
+    alignItems: 'center',
+    paddingTop: '3rem',
+    padding: '1 .5rem',
   },
 }));
+
 
 export const ChatForm = styled('form')(({ theme }) => ({
   width: '100%',
@@ -96,6 +102,8 @@ export const ResponsiveImage = styled('img')(({ theme }) => ({
   borderRadius: '8px',
   boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
   objectFit: 'cover',
+  display: 'block',
+  margin: '1rem 0',
 
   [theme.breakpoints.down('sm')]: {
     maxWidth: '100%',

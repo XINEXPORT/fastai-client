@@ -32,7 +32,6 @@ const ChatWindow = () => {
         ) : aiResponse ? (
           <>
             {aiResponse.media?.length ? (
-              
               <ResponsiveImage
                 src={aiResponse.media[0]}
                 alt="AI generated"
@@ -46,8 +45,6 @@ const ChatWindow = () => {
         ) : (
           <Message>Try asking for advice!</Message>
         )}
-      </MessageWrapper>
-
       <ChatForm onSubmit={handleSubmit}>
         <Input
           value={userInput}
@@ -64,6 +61,8 @@ const ChatWindow = () => {
         />
         <Button type="submit" disabled={loading}>Send</Button>
       </ChatForm>
+      </MessageWrapper>
+
     </Container>
   );
 };
